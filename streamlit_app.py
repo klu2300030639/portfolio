@@ -9,11 +9,17 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Full edge-to-edge styling, hiding Streamlit UI chrome
 st.markdown('''
 <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    .stApp {
+        background-color: #07090e !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
     .block-container {
         padding: 0rem !important;
         margin: 0rem !important;
@@ -23,9 +29,6 @@ st.markdown('''
         width: 100% !important;
         border: none !important;
     }
-    [data-testid="stAppViewContainer"] {
-        background-color: #07090e;
-    }
 </style>
 ''', unsafe_allow_html=True)
 
@@ -34,6 +37,6 @@ html_path = os.path.join(os.path.dirname(__file__), "standalone.html")
 if os.path.exists(html_path):
     with open(html_path, "r", encoding="utf-8") as f:
         html_content = f.read()
-    components.html(html_content, height=4500, scrolling=True)
+    components.html(html_content, height=4200, scrolling=True)
 else:
     st.error("Portfolio HTML bundle not found.")
