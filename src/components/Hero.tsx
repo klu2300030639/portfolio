@@ -62,7 +62,7 @@ export const Hero: React.FC = () => {
                 GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/sindiri-arayan"
+                href="https://www.linkedin.com/in/sindiriarayan639"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
@@ -232,3 +232,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+

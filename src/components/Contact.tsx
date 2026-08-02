@@ -79,8 +79,8 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>LINKEDIN PROFILE</div>
-                    <a href="https://www.linkedin.com/in/sindiri-arayan" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: 'var(--secondary-light)', fontSize: '0.95rem', textDecoration: 'none' }}>
-                      linkedin.com/in/sindiri-arayan
+                    <a href="https://www.linkedin.com/in/sindiriarayan639" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: 'var(--secondary-light)', fontSize: '0.95rem', textDecoration: 'none' }}>
+                      linkedin.com/in/sindiriarayan639
                     </a>
                   </div>
                 </div>
@@ -222,3 +222,4 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
+
