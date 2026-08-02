@@ -80,46 +80,70 @@ export const Hero: React.FC = () => {
               </a>
             </div>
 
-            {/* Stat Counters Grid */}
+            {/* Perfectly Formatted & Aligned Stat Counters Grid */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-              gap: '16px',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gap: '12px',
               borderTop: '1px solid var(--border-color)',
-              paddingTop: '28px'
+              paddingTop: '24px'
             }}>
-              <div>
-                <div style={{ fontSize: '1.7rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">
+              <div style={{
+                padding: '12px 10px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                textAlign: 'left'
+              }}>
+                <div style={{ fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">
                   19+
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', marginTop: '2px', whiteSpace: 'nowrap' }}>
                   GitHub Repos
                 </div>
               </div>
 
-              <div>
-                <div style={{ fontSize: '1.7rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text-cyan">
+              <div style={{
+                padding: '12px 10px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                textAlign: 'left'
+              }}>
+                <div style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)', fontWeight: 800, fontFamily: 'var(--font-heading)', whiteSpace: 'nowrap' }} className="gradient-text-cyan">
                   Vision AI
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', marginTop: '2px', whiteSpace: 'nowrap' }}>
                   YOLOv8 Models
                 </div>
               </div>
 
-              <div>
-                <div style={{ fontSize: '1.7rem', fontWeight: 800, fontFamily: 'var(--font-heading)', color: 'var(--tertiary)' }}>
+              <div style={{
+                padding: '12px 10px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                textAlign: 'left'
+              }}>
+                <div style={{ fontSize: 'clamp(0.98rem, 1.4vw, 1.25rem)', fontWeight: 800, fontFamily: 'var(--font-heading)', color: 'var(--tertiary)', whiteSpace: 'nowrap' }}>
                   Docker/K8s
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', marginTop: '2px', whiteSpace: 'nowrap' }}>
                   DevOps Pipeline
                 </div>
               </div>
 
-              <div>
-                <div style={{ fontSize: '1.7rem', fontWeight: 800, fontFamily: 'var(--font-heading)', color: '#f59e0b' }}>
+              <div style={{
+                padding: '12px 10px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                textAlign: 'left'
+              }}>
+                <div style={{ fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)', fontWeight: 800, fontFamily: 'var(--font-heading)', color: '#f59e0b' }}>
                   KLEF
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', marginTop: '2px', whiteSpace: 'nowrap' }}>
                   KL University
                 </div>
               </div>
