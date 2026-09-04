@@ -1,4 +1,4 @@
-﻿import { CustomCursor } from './components/CustomCursor';
+import { CustomCursor } from './components/CustomCursor';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -14,6 +14,10 @@ export function App() {
       
       <CustomCursor />
 
+      {/* Responsive Faded Background Wallpaper */}
+      <div className="bg-wallpaper" />
+
+      {/* Ambient Grid Overlay */}
       <div className="bg-mesh">
         <div className="mesh-ball-1"></div>
         <div className="mesh-ball-2"></div>
@@ -36,4 +40,3 @@ export function App() {
 }
 
 export default App;
-

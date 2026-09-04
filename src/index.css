@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg-dark: #07090E;
   --bg-card: rgba(15, 22, 36, 0.7);
   --bg-card-hover: rgba(22, 33, 54, 0.9);
@@ -52,6 +52,39 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Responsive Faded Wallpaper Background */
+.bg-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(ellipse at 65% 35%, rgba(7, 9, 14, 0.35) 0%, rgba(7, 9, 14, 0.85) 60%, var(--bg-dark) 95%),
+    linear-gradient(180deg, rgba(7, 9, 14, 0.5) 0%, rgba(7, 9, 14, 0.25) 40%, rgba(7, 9, 14, 0.95) 100%),
+    linear-gradient(90deg, rgba(7, 9, 14, 0.92) 0%, rgba(7, 9, 14, 0.35) 50%, rgba(7, 9, 14, 0.88) 100%),
+    url('/wallpaper.jpg');
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  filter: contrast(110%) saturate(108%);
+  transition: opacity 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+  .bg-wallpaper {
+    background-position: 72% 25%;
+    opacity: 0.26;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-wallpaper {
+    background-position: 50% 15%;
+    opacity: 0.22;
+  }
 }
 
 /* Expansive Full-Width Grid Background */
