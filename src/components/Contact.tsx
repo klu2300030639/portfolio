@@ -1,12 +1,14 @@
-﻿import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, MapPin, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Copy, Check, Send, MapPin, Sparkles, Loader2, AlertCircle } from 'lucide-react';
 import { LinkedinIcon } from './LinkedinIcon';
 import { GithubIcon } from './GithubIcon';
 
 export const Contact: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('aryansindiri115714@gmail.com');
@@ -14,11 +16,40 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "5c698baf-2553-46ad-862d-0bb040a5f5f0",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`,
+          from_name: "Sindiri Arayan Portfolio",
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setErrorMessage(result.message || "Something went wrong. Please try emailing directly.");
+      }
+    } catch (err) {
+      setErrorMessage("Network error. Please email aryansindiri115714@gmail.com directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,14 +168,39 @@ export const Contact: React.FC = () => {
               <div style={{ textAlign: 'center', padding: '40px 20px' }}>
                 <Sparkles size={48} color="var(--tertiary)" style={{ margin: '0 auto 16px' }} />
                 <h4 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>
-                  Message Received!
+                  Message Sent Successfully!
                 </h4>
-                <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem' }}>
-                  Thank you for reaching out, Sindiri Arayan will respond shortly.
+                <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', marginBottom: '24px' }}>
+                  Thank you for reaching out! Your message has been sent directly to Sindiri Arayan's email.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="btn-secondary"
+                  style={{ margin: '0 auto', fontSize: '0.88rem' }}
+                >
+                  Send Another Message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {errorMessage && (
+                  <div style={{
+                    padding: '12px 16px',
+                    borderRadius: 'var(--radius-sm)',
+                    background: 'rgba(239, 68, 68, 0.15)',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                    color: '#fca5a5',
+                    fontSize: '0.88rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}>
+                    <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 <div>
                   <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--text-sub)', marginBottom: '6px', fontFamily: 'var(--font-mono)' }}>YOUR NAME</label>
                   <input
@@ -209,8 +265,29 @@ export const Contact: React.FC = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn-primary" style={{ marginTop: '8px', justifyContent: 'center' }}>
-                  <Send size={18} /> Send Message
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={isSubmitting}
+                  style={{
+                    marginTop: '8px',
+                    justifyContent: 'center',
+                    opacity: isSubmitting ? 0.7 : 1,
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} /> Send Message
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -222,5 +299,3 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
-
-
